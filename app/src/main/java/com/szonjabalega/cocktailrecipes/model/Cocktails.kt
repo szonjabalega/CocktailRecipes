@@ -1,4 +1,7 @@
 package com.szonjabalega.cocktailrecipes.model
 
-class Cocktails {
-}
+data class Cocktails(
+    val id: Number,
+    val name: String,
+    val recipe: String
+)

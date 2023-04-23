@@ -1,9 +1,11 @@
-package com.szonjabalega.cocktailrecipes.ui.list
+package com.szonjabalega.cocktailrecipes
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
+import dagger.hilt.android.AndroidEntryPoint
 
-class CocktailsListActivity : ComponentActivity() {
+@AndroidEntryPoint
+class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
