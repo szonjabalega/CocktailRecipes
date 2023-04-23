@@ -1,9 +1,9 @@
-package com.szonjabalega.cocktailrecipes
+package com.szonjabalega.cocktailrecipes.ui.list
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 
-class MainActivity : ComponentActivity() {
+class CocktailsListActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
