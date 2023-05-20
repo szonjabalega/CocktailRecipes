@@ -27,7 +27,7 @@ interface CocktailsApi{
      */
 
     @POST("drink")
-    suspend fun handlePostQuote(drink: Cocktail)
+    suspend fun handlePostRecipe(drink: Cocktail)
 
     /**
      * Get random cocktail
@@ -35,7 +35,7 @@ interface CocktailsApi{
      * @return kotlin.Array<Cocktail>
      */
     @GET("quote")
-    suspend fun handleGetRandomQuote() : Response<Cocktail>
+    suspend fun handleGetRandomRecipe() : Response<Array<Cocktail>>
     /*RequestMethod.GET,
     "/random.php",*/
 
@@ -45,7 +45,7 @@ interface CocktailsApi{
      * @return kotlin.Array<Cocktail>
      */
     @GET("quotes")
-    suspend fun handleGetQuotes() : Response<Array<Cocktail>>
+    suspend fun handleGetRecipes() : Response<Array<Cocktail>>
 
     /*RequestMethod.GET,
     "/search.php?f&#x3D;s",*/
