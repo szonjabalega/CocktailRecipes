@@ -1,6 +1,5 @@
 package com.szonjabalega.cocktailrecipes.mock.network
 
-
 import com.szonjabalega.cocktailrecipes.network.apis.CocktailsApi
 import com.szonjabalega.cocktailrecipes.network.models.Cocktail
 import retrofit2.Response
