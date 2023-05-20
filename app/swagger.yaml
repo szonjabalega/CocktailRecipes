@@ -1,0 +1,108 @@
+swagger: "2.0"
+info:
+  description: "Cocktail application API"
+  version: "1.0.0"
+  title: "CocktailRecipe App"
+  contact:
+    email: "szonja.balega@edu.bme.hu"
+host: "thecocktaildb.com/api/json/v1/1"
+schemes:
+  - "https"
+tags:
+  - name: "cocktail recipes"
+    description: "Endpoints for the cocktail recipes"
+paths:
+  /search.php?f=s:
+    get:
+      summary: "Get cocktail recipes starting with the letter S"
+      operationId: "handleGetRecipes"
+      tags:
+        - "drinks"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Successful request"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Drink"
+  /random.php:
+    get:
+      summary: "Get random cocktail"
+      operationId: "handleGetRandomRecipe"
+      tags:
+        - "drinks"
+      produces:
+        - "application/json"
+      responses:
+        "200":
+          description: "Successful request"
+          schema:
+            items:
+              $ref: "#/definitions/Drink"
+  /drinks:
+    post:
+      summary: "Add new cocktail recipe"
+      operationId: "handlePostRecipe"
+      tags:
+        - "drinks"
+      produces:
+        - "application/json"
+      consumes:
+        - "application/json"
+      parameters:
+        - name: "recipe"
+          in: "body"
+          schema:
+            type: "object"
+            properties:
+              items:
+                $ref: "#/definitions/Drink"
+      responses:
+        "201":
+          description: "Successful request"
+
+definitions:
+  Drink:
+    type: "object"
+    properties:
+      idDrink:
+        type: "integer"
+        format: "int64"
+      strDrink:
+        type: "string"
+      strInstructions:
+        type: "string"
+      strDrinkThumb:
+        type: "string"
+      strIngredient1:
+        type: "string"
+      strIngredient2:
+        type: "string"
+      strIngredient3:
+        type: "string"
+      strIngredient4:
+        type: "string"
+      strIngredient5:
+        type: "string"
+      strIngredient6:
+        type: "string"
+      strIngredient7:
+        type: "string"
+      strMeasure1:
+        type: "string"
+      strMeasure2:
+        type: "string"
+      strMeasure3:
+        type: "string"
+      strMeasure4:
+        type: "string"
+      strMeasure5:
+        type: "string"
+      strMeasure6:
+        type: "string"
+      strMeasure7:
+        type: "string"
+    xml:
+      name: "Drink"
