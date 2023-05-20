@@ -12,12 +12,12 @@
 package com.szonjabalega.cocktailrecipes.network.apis
 
 
-import com.szonjabalega.cocktailrecipes.network.models.Drink
+import com.szonjabalega.cocktailrecipes.network.models.Cocktail
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface DrinksApi{
+interface CocktailsApi{
 //basePath: kotlin.String = "https://thecocktaildb.com/api/json/v1/1"
     /**
      * Add new cocktail recipe
@@ -27,25 +27,25 @@ interface DrinksApi{
      */
 
     @POST("drink")
-    suspend fun handlePostQuote(drink: Drink)
+    suspend fun handlePostQuote(drink: Cocktail)
 
     /**
      * Get random cocktail
      *
-     * @return kotlin.Array<Drink>
+     * @return kotlin.Array<Cocktail>
      */
     @GET("quote")
-    suspend fun handleGetRandomQuote() : Response<Drink>
+    suspend fun handleGetRandomQuote() : Response<Cocktail>
     /*RequestMethod.GET,
     "/random.php",*/
 
     /**
      * Get cocktail recipes starting with the letter S
      *
-     * @return kotlin.Array<Drink>
+     * @return kotlin.Array<Cocktail>
      */
     @GET("quotes")
-    suspend fun handleGetQuotes() : Response<Array<Drink>>
+    suspend fun handleGetQuotes() : Response<Array<Cocktail>>
 
     /*RequestMethod.GET,
     "/search.php?f&#x3D;s",*/

@@ -67,7 +67,7 @@ package com.szonjabalega.cocktailrecipes.network.models
  * @param strCreativeCommonsConfirmed
  * @param dateModified
  */
-data class Drink (
+data class Cocktail (
     val idDrink: kotlin.Long? = null,
     val strDrink: kotlin.String? = null,
     val strDrinkAlternate: kotlin.String? = null,
