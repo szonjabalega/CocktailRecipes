@@ -34,17 +34,17 @@ interface CocktailsApi{
      *
      * @return kotlin.Array<Cocktail>
      */
-    @GET("quote")
+    @GET("/random.php")
     suspend fun handleGetRandomRecipe() : Response<Array<Cocktail>>
     /*RequestMethod.GET,
-    "/random.php",*/
+    "",*/
 
     /**
      * Get cocktail recipes starting with the letter S
      *
      * @return kotlin.Array<Cocktail>
      */
-    @GET("quotes")
+    @GET("/search.php=s")
     suspend fun handleGetRecipes() : Response<Array<Cocktail>>
 
     /*RequestMethod.GET,

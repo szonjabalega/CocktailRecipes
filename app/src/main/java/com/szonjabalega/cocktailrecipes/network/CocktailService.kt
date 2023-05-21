@@ -3,12 +3,18 @@ package com.szonjabalega.cocktailrecipes.network
 import com.squareup.moshi.Moshi
 import dagger.Provides
 import com.szonjabalega.cocktailrecipes.network.apis.CocktailsApi
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import javax.inject.Singleton
+
+@Module
+@InstallIn(SingletonComponent::class)
 abstract class CocktailService {
     companion object {
         private const val BASE_URL = "https://thecocktaildb.com/api/json/v1/1"
