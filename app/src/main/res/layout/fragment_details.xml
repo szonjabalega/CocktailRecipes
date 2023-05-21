@@ -1,0 +1,42 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/cocktail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/cocktail_name"
+            android:textSize="20sp"
+            android:gravity="center" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cocktail_placeholder" />
+
+        <TextView
+            android:id="@+id/ingredients"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/ingredients"
+            android:paddingBottom="20dp"
+            android:paddingTop="10dp"/>
+
+        <TextView
+            android:id="@+id/recipe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/recipe" />
+
+    </LinearLayout>
+
+</ScrollView>
