@@ -118,7 +118,7 @@ data class Cocktail (
     val strImageSource: kotlin.String? = null,
     val strImageAttribution: kotlin.String? = null,
     val strCreativeCommonsConfirmed: kotlin.String? = null,
-    val dateModified: kotlin.String? = null,
+    val dateModified: kotlin.String? = null
 ) {
 
 }

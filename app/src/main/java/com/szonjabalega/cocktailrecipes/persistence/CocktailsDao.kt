@@ -2,6 +2,7 @@ package com.szonjabalega.cocktailrecipes.persistence
 
 
 import androidx.room.Dao
+import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 
@@ -12,4 +13,6 @@ interface CocktailsDao {
 
     @Insert
     fun insertAll(vararg quotes: Cocktail)
+    @Query("DELETE FROM cocktail")
+    fun deleteAll()
 }

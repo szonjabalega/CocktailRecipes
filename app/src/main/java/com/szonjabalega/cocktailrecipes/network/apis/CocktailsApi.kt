@@ -35,7 +35,7 @@ interface CocktailsApi{
      * @return kotlin.Array<Cocktail>
      */
     @GET("/random.php")
-    suspend fun handleGetRandomRecipe() : Response<Array<Cocktail>>
+    suspend fun handleGetRandomRecipe() : Response<Cocktail>
     /*RequestMethod.GET,
     "",*/
 

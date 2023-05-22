@@ -1,11 +1,29 @@
-package com.szonjabalega.cocktailrecipes.mock.network
+package com.szonjabalega.cocktailrecipes
 
-import com.szonjabalega.cocktailrecipes.network.apis.CocktailsApi
-import com.szonjabalega.cocktailrecipes.network.models.Cocktail
-import retrofit2.Response
+import com.szonjabalega.cocktailrecipes.mock.network.MockApi
+import com.szonjabalega.cocktailrecipes.mock.persistence.MockCocktailsDao
+import com.szonjabalega.cocktailrecipes.persistence.Cocktail
+import kotlinx.coroutines.runBlocking
+import org.junit.After
+import org.junit.*
 
-class MockApi: CocktailsApi {
-    override suspend fun handleGetRecipes(): Response<Array<Cocktail>> {
+class TestCocktailsApp {
+    private lateinit var daoMock: MockCocktailsDao
+    private lateinit var apiMock: MockApi
+
+    @Before
+    fun before() {
+        daoMock = MockCocktailsDao()
+        apiMock = MockApi()
+    }
+
+    @After
+    fun after() {
+        daoMock.deleteAll()
+    }
+
+    @Test
+    fun TestCocktailAddMock() {
         val c = Cocktail(
             idDrink = 1, strDrink = "Gin&Tonic",
             strDrinkAlternate = null, strTags = null, strVideo  = null,
@@ -21,13 +39,15 @@ class MockApi: CocktailsApi {
             strMeasure6 = null, strMeasure7 = null, strMeasure8 = null, strMeasure9 = null, strMeasure10 = null,
             strMeasure11 = null, strMeasure12 = null, strMeasure13 = null, strMeasure14 = null, strMeasure15 = null,
             strImageSource = null, strImageAttribution = null, strCreativeCommonsConfirmed = null, dateModified = null)
-        var cocktails: Array<Cocktail> = emptyArray()
-        cocktails += c
-        return Response.success(cocktails)
+        daoMock.insertAll(c)
+        val list = daoMock.getAll()
+        assert(list.size == 1)
+        assert(list[0] == c)
     }
 
-    override suspend fun handleGetRandomRecipe(): Response<Cocktail> {
-        return Response.success(Cocktail(
+    @Test
+    fun TestRecipeDeleteAllMock() {
+        val c = Cocktail(
             idDrink = 1, strDrink = "Gin&Tonic",
             strDrinkAlternate = null, strTags = null, strVideo  = null,
             strCategory = null, strIBA = null, strAlcoholic = "Alcoholic",
@@ -41,10 +61,27 @@ class MockApi: CocktailsApi {
             strMeasure1 = "one shot", strMeasure2 = "250ml", strMeasure3 = null, strMeasure4 = null, strMeasure5 = null,
             strMeasure6 = null, strMeasure7 = null, strMeasure8 = null, strMeasure9 = null, strMeasure10 = null,
             strMeasure11 = null, strMeasure12 = null, strMeasure13 = null, strMeasure14 = null, strMeasure15 = null,
-            strImageSource = null, strImageAttribution = null, strCreativeCommonsConfirmed = null, dateModified = null))
+            strImageSource = null, strImageAttribution = null, strCreativeCommonsConfirmed = null, dateModified = null)
+        daoMock.insertAll(c)
+        var list = daoMock.getAll()
+        assert(list.size == 1)
+        assert(list[0] == c)
+        daoMock.deleteAll()
+        list = daoMock.getAll()
+        assert(list.size == 0)
     }
 
-    override suspend fun handlePostRecipe(cocktail: Cocktail) {
-        //
+
+    @Test
+    fun TestRecipeGet() = runBlocking {
+        val cocktails = apiMock.handleGetRecipes().body()
+        assert(cocktails!!.size == 1)
+        assert(cocktails[0].idDrink!! == 1L)
+    }
+
+    @Test
+    fun TestRandomRecipe() = runBlocking {
+        val quotes = apiMock.handleGetRandomRecipe().body()
+        assert(quotes!!.idDrink == 1L)
     }
 }

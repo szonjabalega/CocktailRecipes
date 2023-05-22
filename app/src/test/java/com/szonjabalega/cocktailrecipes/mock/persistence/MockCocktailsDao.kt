@@ -4,11 +4,20 @@ import com.szonjabalega.cocktailrecipes.persistence.Cocktail
 import com.szonjabalega.cocktailrecipes.persistence.CocktailsDao
 
 class MockCocktailsDao: CocktailsDao {
-    override fun getAll(): List<Cocktail> {
-        TODO("Not yet implemented")
+    companion object {
+        private val  cocktails = mutableListOf<Cocktail>()
     }
 
-    override fun insertAll(vararg cocktails: Cocktail) {
-        TODO("Not yet implemented")
+    override fun getAll(): List<Cocktail> {
+        return cocktails;
+    }
+
+    override fun insertAll(vararg cocktailsIn: Cocktail) {
+        cocktailsIn.forEach {
+            cocktails.add(it)
+        }
+    }
+    override fun deleteAll() {
+        cocktails.clear()
     }
 }
